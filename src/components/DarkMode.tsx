@@ -3,11 +3,14 @@ import React, { useEffect, useState } from "react";
 import { BiSolidSun, BiSolidMoon } from "react-icons/bi";
 
 const DarkMode = () => {
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
-  );
+let item;
+let element: any;
+if (typeof window !== "undefined") {
+  item = localStorage.getItem("key");
+  element = document.documentElement;
+}
 
-  const element = document.documentElement;
+const [theme, setTheme] = useState(item ? item : "light");
 
   useEffect(() => {
     localStorage.setItem("theme", theme!);
